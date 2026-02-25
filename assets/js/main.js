@@ -21,3 +21,19 @@ async function includeHTML() {
 }
 
 document.addEventListener('DOMContentLoaded', includeHTML);
+
+// mobile nav toggle + footer year
+document.addEventListener('DOMContentLoaded', function(){
+  var toggle = document.getElementById('nav-toggle');
+  var nav = document.getElementById('site-nav');
+  if(toggle && nav){
+    toggle.addEventListener('click', function(){
+      var open = nav.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', String(open));
+    });
+  }
+
+  var y = new Date().getFullYear();
+  var el = document.getElementById('year');
+  if(el) el.textContent = y;
+});

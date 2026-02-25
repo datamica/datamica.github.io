@@ -8,31 +8,98 @@
     <link rel="stylesheet" href="assets/css/main.css">
 </head>
 <body>
-    <!-- Header placeholder (loaded client-side) -->
-    <div id="header"></div>
+    <!-- Header -->
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="/">
+          <img src="assets/images/logo.svg" alt="Datamica logo" class="logo" />
+          <span class="brand-name">Datamica</span>
+        </a>
 
+        <button id="nav-toggle" class="nav-toggle" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="hamburger"></span>
+        </button>
+
+        <nav class="site-nav" id="site-nav" aria-label="Main navigation">
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="contact.html" class="active">Contact</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Resources</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <h1>Get in touch with Datamica</h1>
+          <p>We help organizations turn data into actionable insights. Ask us about analytics, BI, or custom data solutions.</p>
+          <a href="#contact" class="btn btn-primary">Contact Us</a>
+        </div>
+        <div class="hero-visual" aria-hidden="true">
+          <!-- decorative -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact section -->
     <main>
-        <section class="contact">
-            <h1>Contact Us</h1>
-            <p>If you have any questions or inquiries, feel free to reach out to us!</p>
-            <h2>Email Us</h2>
-            <p>You can contact us at: <a href="mailto:info@datamica.com">info@datamica.com</a></p>
-        </section>
+      <section id="contact" class="contact-block container">
+        <div class="contact-grid">
+          <div class="contact-info">
+            <h2>Contact Information</h2>
+            <p>Have questions or want a proposal? Email us or use the form.</p>
+            <ul class="info-list">
+              <li><strong>Email:</strong> <a href="mailto:info@datamica.com">info@datamica.com</a></li>
+              <li><strong>Phone:</strong> <a href="tel:+1234567890">+1 (234) 567-890</a></li>
+              <li><strong>Location:</strong> Remote / Worldwide</li>
+            </ul>
+          </div>
+
+          <div class="contact-form">
+            <h2>Send a message</h2>
+            <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
+              <label>
+                <span>Name</span>
+                <input type="text" name="name" required>
+              </label>
+              <label>
+                <span>Email</span>
+                <input type="email" name="_replyto" required>
+              </label>
+              <label>
+                <span>Message</span>
+                <textarea name="message" rows="6" required></textarea>
+              </label>
+              <button type="submit" class="btn btn-primary">Send</button>
+            </form>
+          </div>
+        </div>
+      </section>
     </main>
 
-    <!-- Footer placeholder (loaded client-side) -->
-    <div id="footer"></div>
-
-    <noscript>
-      <!-- Minimal fallback header/footer for users without JS -->
-      <header>
-        <h2>Datamica</h2>
-        <nav><a href="contact.html">Contact</a></nav>
-      </header>
-      <footer>
-        <p>&copy; Datamica</p>
-      </footer>
-    </noscript>
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div class="footer-brand">
+          <span class="brand-name">Datamica</span>
+          <p class="muted">Turning data into decisions.</p>
+        </div>
+        <div class="footer-links">
+          <nav>
+            <a href="/">Home</a>
+            <a href="contact.html">Contact</a>
+            <a href="#">Privacy</a>
+          </nav>
+        </div>
+        <div class="footer-copy">
+          <p>&copy; <span id="year"></span> Datamica</p>
+        </div>
+      </div>
+    </footer>
 
     <script src="assets/js/main.js"></script>
 </body>
