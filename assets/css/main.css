@@ -71,65 +71,34 @@ html,body{height:100%;margin:0;background:var(--bg);color:var(--text);-webkit-fo
 }
 
 /* Services sections */
-.service-section{padding:36px 0;border-top:1px solid #eef2f7}
-.service-grid{display:flex;gap:28px;align-items:center}
-.service-text{flex:1;min-width:0}
-.service-text h2{margin-top:0;margin-bottom:10px}
-.service-chart{flex:1;display:flex;align-items:center;justify-content:center;min-height:200px}
-
-/* reverse layout helper (chart left, text right) */
+.service-section{padding:36px 0}
+.service-grid{display:flex;align-items:center;gap:28px}
 .service-grid.reverse{flex-direction:row-reverse}
+.panel{flex:1;min-width:0}
+.panel.text h3{margin:0 0 10px;font-size:1.15rem}
+.panel.text p{color:var(--muted);margin:0}
 
-/* chart placeholder box */
+/* dotted chart placeholder (no inner borders on panels) */
 .chart-placeholder{
   width:100%;
-  max-width:520px;
-  height:220px;
-  border-radius:10px;
-  background:linear-gradient(180deg,#f4f7fb,#ffffff);
-  border:1px dashed #cbd5e1;
+  max-width:680px;
+  height:260px;
+  border-radius:8px;
+  background:#fff;
+  border:2px dotted rgba(16,24,40,0.12);
   display:flex;
   align-items:center;
   justify-content:center;
-  color:#6b7280;
+  color:var(--muted);
   font-weight:600;
-  box-shadow:0 6px 18px rgba(11,116,222,0.06);
 }
 
-/* Services: alternating two-panel layout */
-.service-section{padding:48px 0;border-top:1px solid #eef2f7}
-.service-grid{display:flex;align-items:center;gap:36px}
-.service-grid.reverse{flex-direction:row-reverse}
+/* keep panels visually borderless, spacing provides separation */
+.service-section + .service-section{margin-top:6px}
 
-/* Panels */
-.panel{flex:1;min-width:0}
-.panel.text{padding:6px 0}
-.panel.text h3{font-size:1.25rem;margin:0 0 10px}
-.panel.text p{color:var(--muted);margin:0 0 6px}
-
-/* Badge / meta */
-.meta{margin-bottom:12px}
-.badge{display:inline-block;background:#0b74de;color:#fff;padding:8px 12px;border-radius:999px;font-weight:700;font-size:0.9rem;box-shadow:0 6px 18px rgba(11,116,222,0.08)}
-
-/* Chart placeholder */
-.chart-placeholder{
-  width:100%;
-  height:280px;
-  border-radius:12px;
-  background:linear-gradient(135deg,#f7fbff,#ffffff);
-  border:1px dashed rgba(11,116,222,0.12);
-  display:flex;align-items:center;justify-content:center;
-  color:var(--muted);font-weight:600;
-  box-shadow:0 12px 30px rgba(11,116,222,0.06);
-}
-
-/* Slight variation for smaller placeholders if needed */
-.panel.chart .chart-placeholder{max-width:720px;}
-
-/* Responsive: stack panels on small screens */
-@media (max-width:900px){
+/* Responsive: stack the two panels in each section */
+@media(max-width:900px){
   .service-grid{flex-direction:column}
   .service-grid.reverse{flex-direction:column}
-  .chart-placeholder{height:180px}
-  .badge{padding:6px 10px;font-size:0.85rem}
+  .chart-placeholder{height:180px;max-width:100%}
 }
