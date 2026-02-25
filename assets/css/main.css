@@ -102,3 +102,31 @@ html,body{height:100%;margin:0;background:var(--bg);color:var(--text);-webkit-fo
   .service-grid.reverse{flex-direction:column}
   .chart-placeholder{height:180px;max-width:100%}
 }
+
+/* Service page: stacked boxes with two panels (image + content) */
+.service-box{padding:28px 0} /* spacing between boxes; no borders */
+.service-box .inner{display:flex;align-items:center;gap:28px}
+.service-box.reverse .inner{flex-direction:row-reverse}
+
+/* panels */
+.panel{flex:1;min-width:0}
+.panel.image{display:flex;align-items:center;justify-content:center}
+.panel.content{padding:8px 12px}
+.panel.content h3{margin:0 0 10px;font-size:1.15rem}
+.panel.content p{margin:0;color:var(--muted)}
+
+/* SVG placeholder sizing */
+.placeholder{width:100%;max-width:560px;height:auto;display:block}
+
+/* make placeholder visually dotted via SVG stroke (already set in inline SVG) */
+
+/* ensure no borders on panels - visual separation by spacing only */
+.service-box + .service-box{border-top:0}
+
+/* Responsive: stack panels vertically on small screens */
+@media (max-width:900px){
+  .service-box .inner{flex-direction:column;align-items:stretch}
+  .panel.image{order:0}
+  .panel.content{order:1;padding-top:16px}
+  .placeholder{max-width:100%;height:auto}
+}
