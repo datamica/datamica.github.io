@@ -1,0 +1,23 @@
+{
+  "name": "datamica",
+  "version": "1.0.0",
+  "description": "A data asset management consulting firm helping SMEs and NGOs adopt a data-driven culture.",
+  "main": "index.html",
+  "scripts": {
+    "start": "live-server .",
+    "build": "echo 'Build step not defined yet.'"
+  },
+  "keywords": [
+    "data",
+    "consulting",
+    "SMEs",
+    "NGOs",
+    "data-driven"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "live-server": "^1.2.1"
+  }
+}

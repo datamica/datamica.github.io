@@ -1,0 +1,16 @@
+{
+  "services": [
+    {
+      "name": "Data Warehousing & Lifecycle Workflow Automation",
+      "description": "Comprehensive solutions for data warehousing that streamline data management processes and automate workflows to enhance efficiency."
+    },
+    {
+      "name": "Business Intelligence & Data Analytics & Visualization",
+      "description": "Transform your data into actionable insights with our business intelligence services, including advanced analytics and visualization techniques."
+    },
+    {
+      "name": "Data Quality Management",
+      "description": "Ensure the integrity and accuracy of your data with our data quality management services, designed to identify and rectify data issues."
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    background-color: #f9f9f9;
+}
+
+header {
+    background-color: #4A90E2;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+nav {
+    margin: 20px 0;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+h1, h2, h3 {
+    color: #333;
+}
+
+section {
+    padding: 40px 20px;
+    margin: 20px 0;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+footer {
+    background-color: #4A90E2;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+.slogan {
+    font-size: 2.5em;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+.company-description {
+    font-size: 1.2em;
+    margin: 20px 0;
+}
+
+.product-service {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.product-service div {
+    margin: 10px 0;
+    padding: 15px;
+    border: 1px solid #4A90E2;
+    border-radius: 5px;
+    width: 80%;
+    text-align: center;
+}
+
+@media (min-width: 768px) {
+    .product-service {
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .product-service div {
+        width: 30%;
+    }
+}
