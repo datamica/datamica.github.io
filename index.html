@@ -3,18 +3,70 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Datamica</title>
+  <title>Datamica — Home</title>
+  <base href="/">
   <link rel="stylesheet" href="assets/css/main.css">
-  <meta http-equiv="refresh" content="0; URL=contact.html">
 </head>
 <body>
-  <noscript>
-    <p>Redirecting to <a href="contact.html">contact page</a>. If you are not redirected automatically, click the link.</p>
-  </noscript>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">
+        <img src="assets/images/logo.svg" alt="Datamica logo" class="logo" />
+        <span class="brand-name">Datamica</span>
+      </a>
+
+      <button id="nav-toggle" class="nav-toggle" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="hamburger"></span>
+      </button>
+
+      <nav class="site-nav" id="site-nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="resources.html">Resources</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
   <main>
-    <h1>Datamica</h1>
-    <p><a href="contact.html">Go to Contact page</a></p>
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <h1>Datamica — Turning data into decisions</h1>
+          <p class="muted">Analytics, BI and custom data engineering to help teams act with confidence.</p>
+          <a href="contact.html" class="btn btn-primary">Contact Us</a>
+        </div>
+        <div class="hero-visual" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <section class="container" style="padding:40px 0;">
+      <h2>Our Services</h2>
+      <p class="muted">Short intro to services. Use the Services page for full details.</p>
+    </section>
   </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="brand-name">Datamica</span>
+        <p class="muted">Turning data into decisions.</p>
+      </div>
+      <div class="footer-links">
+        <nav>
+          <a href="index.html">Home</a>
+          <a href="contact.html">Contact</a>
+          <a href="services.html">Services</a>
+        </nav>
+      </div>
+      <div class="footer-copy">
+        <p>&copy; <span id="year"></span> Datamica</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
 </body>
 </html>
