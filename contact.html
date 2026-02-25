@@ -61,12 +61,10 @@
 
           <div class="contact-form">
             <h2>Send a message</h2>
-            <!-- removed external action to avoid "Form not found" errors;
-               JS will open user's mail client with the message. -->
-            <form id="contact-form" method="POST" novalidate>
-              <!-- optional formsubmit hidden fields (kept as fallback) -->
+            <!-- submit to FormSubmit and redirect back with ?sent=1 -->
+            <form id="contact-form" action="https://formsubmit.co/datamica.sg@gmail.com" method="POST" novalidate>
               <input type="hidden" name="_subject" value="New Datamica contact form submission">
-              <input type="hidden" name="_next" value="https://datamica.github.io/">
+              <input type="hidden" name="_next" value="https://datamica.github.io/contact.html?sent=1">
               <input type="hidden" name="_captcha" value="false">
 
               <label>
@@ -83,6 +81,11 @@
               </label>
               <button type="submit" class="btn btn-primary">Send</button>
             </form>
+
+            <!-- success message shown after redirect from FormSubmit -->
+            <div id="form-message" role="status" style="display:none;margin-top:12px;color:#065f46;">
+              Your email has been sent. We will reach out to you shortly.
+            </div>
           </div>
         </div>
       </section>

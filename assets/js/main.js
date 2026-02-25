@@ -22,7 +22,7 @@ async function includeHTML() {
 
 document.addEventListener('DOMContentLoaded', includeHTML);
 
-// mobile nav toggle + footer year + active nav highlighting + contact mailto fallback
+// mobile nav toggle + footer year + active nav highlighting
 document.addEventListener('DOMContentLoaded', function(){
   var toggle = document.getElementById('nav-toggle');
   var nav = document.getElementById('site-nav');
@@ -54,30 +54,21 @@ document.addEventListener('DOMContentLoaded', function(){
     });
   } catch(e){ /* noop */ }
 
-  // contact form mailto fallback
+  // show success message when redirected with ?sent=1
   try {
-    var form = document.getElementById('contact-form');
-    if(form){
-      form.addEventListener('submit', function(e){
-        e.preventDefault();
-        var frm = e.target;
-        var name = (frm.querySelector('input[name="name"]') || {}).value || '';
-        var from = (frm.querySelector('input[name="email"]') || {}).value || '';
-        var msg = (frm.querySelector('textarea[name="message"]') || {}).value || '';
-
-        // basic validation
-        if(!name || !from || !msg){
-          alert('Please fill name, email and message.');
-          return;
-        }
-
-        var subject = encodeURIComponent('Contact from ' + (name || from));
-        var body = encodeURIComponent('Name: ' + name + '\nEmail: ' + from + '\n\nMessage:\n' + msg);
-
-        // open mail client addressed to datamica.sg@gmail.com
-        var mailto = 'mailto:datamica.sg@gmail.com?subject=' + subject + '&body=' + body;
-        window.location.href = mailto;
-      });
+    var params = new URLSearchParams(window.location.search);
+    if (params.get('sent') === '1') {
+      var msg = document.getElementById('form-message');
+      if (msg) {
+        msg.style.display = 'block';
+        // optional: scroll into view
+        msg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+      // remove query string from address bar (optional)
+      if (history && history.replaceState) {
+        var url = window.location.origin + window.location.pathname;
+        history.replaceState({}, document.title, url);
+      }
     }
   } catch(e){ /* noop */ }
 });
