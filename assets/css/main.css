@@ -96,9 +96,40 @@ html,body{height:100%;margin:0;background:var(--bg);color:var(--text);-webkit-fo
   box-shadow:0 6px 18px rgba(11,116,222,0.06);
 }
 
-/* Responsive: stack on small screens */
-@media(max-width:900px){
+/* Services: alternating two-panel layout */
+.service-section{padding:48px 0;border-top:1px solid #eef2f7}
+.service-grid{display:flex;align-items:center;gap:36px}
+.service-grid.reverse{flex-direction:row-reverse}
+
+/* Panels */
+.panel{flex:1;min-width:0}
+.panel.text{padding:6px 0}
+.panel.text h3{font-size:1.25rem;margin:0 0 10px}
+.panel.text p{color:var(--muted);margin:0 0 6px}
+
+/* Badge / meta */
+.meta{margin-bottom:12px}
+.badge{display:inline-block;background:#0b74de;color:#fff;padding:8px 12px;border-radius:999px;font-weight:700;font-size:0.9rem;box-shadow:0 6px 18px rgba(11,116,222,0.08)}
+
+/* Chart placeholder */
+.chart-placeholder{
+  width:100%;
+  height:280px;
+  border-radius:12px;
+  background:linear-gradient(135deg,#f7fbff,#ffffff);
+  border:1px dashed rgba(11,116,222,0.12);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--muted);font-weight:600;
+  box-shadow:0 12px 30px rgba(11,116,222,0.06);
+}
+
+/* Slight variation for smaller placeholders if needed */
+.panel.chart .chart-placeholder{max-width:720px;}
+
+/* Responsive: stack panels on small screens */
+@media (max-width:900px){
   .service-grid{flex-direction:column}
-  .service-grid.reverse{flex-direction:column} /* keep stacked order consistent */
-  .chart-placeholder{max-width:100%;height:180px}
+  .service-grid.reverse{flex-direction:column}
+  .chart-placeholder{height:180px}
+  .badge{padding:6px 10px;font-size:0.85rem}
 }
