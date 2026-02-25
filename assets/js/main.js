@@ -22,7 +22,7 @@ async function includeHTML() {
 
 document.addEventListener('DOMContentLoaded', includeHTML);
 
-// mobile nav toggle + footer year + active nav highlighting (no redirects)
+// mobile nav toggle + footer year + active nav highlighting + contact mailto fallback
 document.addEventListener('DOMContentLoaded', function(){
   var toggle = document.getElementById('nav-toggle');
   var nav = document.getElementById('site-nav');
@@ -40,12 +40,8 @@ document.addEventListener('DOMContentLoaded', function(){
 
   // highlight active nav item
   try {
-    // get the last path segment or fallback to index.html
     var last = location.pathname.split('/').pop().toLowerCase();
     if (!last) last = 'index.html';
-
-    // also handle cases where the site is served under a repo name (e.g. /repo/)
-    // if pathname equals the repo folder name (no file), treat as index.html
     var links = document.querySelectorAll('.site-nav a');
     links.forEach(function(a){
       var href = (a.getAttribute('href') || '').split('/').pop().toLowerCase();
@@ -56,5 +52,35 @@ document.addEventListener('DOMContentLoaded', function(){
         a.classList.remove('active');
       }
     });
+  } catch(e){ /* noop */ }
+
+  // contact form mailto fallback: prevent "bad gateway" by opening user's mail client with filled values
+  try {
+    var form = document.getElementById('contact-form');
+    if(form){
+      form.addEventListener('submit', function(e){
+        e.preventDefault(); // stop normal submit (server fallback still present if JS removed)
+        var frm = e.target;
+        var name = (frm.querySelector('input[name="name"]') || {}).value || '';
+        var from = (frm.querySelector('input[name="email"]') || {}).value || '';
+        var msg = (frm.querySelector('textarea[name="message"]') || {}).value || '';
+
+        // build subject and body
+        var subject = encodeURIComponent('Contact form — ' + (name || from));
+        var body = encodeURIComponent(
+          'Name: ' + name + '\n' +
+          'Email: ' + from + '\n\n' +
+          'Message:\n' + msg
+        );
+
+        // open user's mail client addressed to datamica.sg@gmail.com
+        var mailto = 'mailto:datamica.sg@gmail.com' + '?subject=' + subject + '&body=' + body;
+        window.location.href = mailto;
+
+        // optional: as a fallback, attempt to submit to external endpoint if JS-enabled users want that
+        // (uncomment to attempt background POST; may be blocked by CORS)
+        // fetch(form.action, { method: 'POST', body: new FormData(form) }).catch(()=>{});
+      });
+    }
   } catch(e){ /* noop */ }
 });
