@@ -33,18 +33,28 @@ document.addEventListener('DOMContentLoaded', function(){
     });
   }
 
+  // footer year
   var y = new Date().getFullYear();
   var el = document.getElementById('year');
   if(el) el.textContent = y;
 
+  // highlight active nav item
   try {
-    var current = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+    // get the last path segment or fallback to index.html
+    var last = location.pathname.split('/').pop().toLowerCase();
+    if (!last) last = 'index.html';
+
+    // also handle cases where the site is served under a repo name (e.g. /repo/)
+    // if pathname equals the repo folder name (no file), treat as index.html
     var links = document.querySelectorAll('.site-nav a');
     links.forEach(function(a){
       var href = (a.getAttribute('href') || '').split('/').pop().toLowerCase();
-      if(href === '') href = 'index.html';
-      if(href === current) a.classList.add('active');
-      else a.classList.remove('active');
+      if (!href) href = 'index.html';
+      if (href === last || (last === 'index.html' && (href === 'index.html' || a.getAttribute('href') === '/'))) {
+        a.classList.add('active');
+      } else {
+        a.classList.remove('active');
+      }
     });
   } catch(e){ /* noop */ }
 });
