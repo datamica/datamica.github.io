@@ -22,7 +22,7 @@ async function includeHTML() {
 
 document.addEventListener('DOMContentLoaded', includeHTML);
 
-// mobile nav toggle + footer year
+// mobile nav toggle + footer year + active nav highlighting (no redirects)
 document.addEventListener('DOMContentLoaded', function(){
   var toggle = document.getElementById('nav-toggle');
   var nav = document.getElementById('site-nav');
@@ -36,4 +36,15 @@ document.addEventListener('DOMContentLoaded', function(){
   var y = new Date().getFullYear();
   var el = document.getElementById('year');
   if(el) el.textContent = y;
+
+  try {
+    var current = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+    var links = document.querySelectorAll('.site-nav a');
+    links.forEach(function(a){
+      var href = (a.getAttribute('href') || '').split('/').pop().toLowerCase();
+      if(href === '') href = 'index.html';
+      if(href === current) a.classList.add('active');
+      else a.classList.remove('active');
+    });
+  } catch(e){ /* noop */ }
 });
