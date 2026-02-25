@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function(){
   var el = document.getElementById('year');
   if(el) el.textContent = y;
 
-  // highlight active nav item
+  // active nav highlighting
   try {
     var last = location.pathname.split('/').pop().toLowerCase();
     if (!last) last = 'index.html';
@@ -54,32 +54,29 @@ document.addEventListener('DOMContentLoaded', function(){
     });
   } catch(e){ /* noop */ }
 
-  // contact form mailto fallback: prevent "bad gateway" by opening user's mail client with filled values
+  // contact form mailto fallback
   try {
     var form = document.getElementById('contact-form');
     if(form){
       form.addEventListener('submit', function(e){
-        e.preventDefault(); // stop normal submit (server fallback still present if JS removed)
+        e.preventDefault();
         var frm = e.target;
         var name = (frm.querySelector('input[name="name"]') || {}).value || '';
         var from = (frm.querySelector('input[name="email"]') || {}).value || '';
         var msg = (frm.querySelector('textarea[name="message"]') || {}).value || '';
 
-        // build subject and body
-        var subject = encodeURIComponent('Contact form — ' + (name || from));
-        var body = encodeURIComponent(
-          'Name: ' + name + '\n' +
-          'Email: ' + from + '\n\n' +
-          'Message:\n' + msg
-        );
+        // basic validation
+        if(!name || !from || !msg){
+          alert('Please fill name, email and message.');
+          return;
+        }
 
-        // open user's mail client addressed to datamica.sg@gmail.com
-        var mailto = 'mailto:datamica.sg@gmail.com' + '?subject=' + subject + '&body=' + body;
+        var subject = encodeURIComponent('Contact from ' + (name || from));
+        var body = encodeURIComponent('Name: ' + name + '\nEmail: ' + from + '\n\nMessage:\n' + msg);
+
+        // open mail client addressed to datamica.sg@gmail.com
+        var mailto = 'mailto:datamica.sg@gmail.com?subject=' + subject + '&body=' + body;
         window.location.href = mailto;
-
-        // optional: as a fallback, attempt to submit to external endpoint if JS-enabled users want that
-        // (uncomment to attempt background POST; may be blocked by CORS)
-        // fetch(form.action, { method: 'POST', body: new FormData(form) }).catch(()=>{});
       });
     }
   } catch(e){ /* noop */ }

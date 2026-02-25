@@ -61,8 +61,9 @@
 
           <div class="contact-form">
             <h2>Send a message</h2>
-            <!-- give the form an id so JS can intercept and build a mailto fallback -->
-            <form id="contact-form" action="https://formsubmit.co/datamica.sg@gmail.com" method="POST" novalidate>
+            <!-- removed external action to avoid "Form not found" errors;
+               JS will open user's mail client with the message. -->
+            <form id="contact-form" method="POST" novalidate>
               <!-- optional formsubmit hidden fields (kept as fallback) -->
               <input type="hidden" name="_subject" value="New Datamica contact form submission">
               <input type="hidden" name="_next" value="https://datamica.github.io/">
